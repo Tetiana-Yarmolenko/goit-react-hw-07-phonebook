@@ -8,7 +8,7 @@ import  fadeTransition from '../Transition/fadeTransition.module.css'
 const Filter = ({ value, onChange, items }) => {
     return (
         <CSSTransition
-        in={items.length > 0}
+            in={items.length > 0}
         timeout={250}
         classNames={fadeTransition}
         unmountOnExit
@@ -29,7 +29,6 @@ const Filter = ({ value, onChange, items }) => {
 const mapStateToProps = (state) => ({
     value: contactsSelectors.getFilter(state),
     items: contactsSelectors.getVisibleContacts(state),
-
 })
 
 const mapDispatchToProps = dispatch => ({
