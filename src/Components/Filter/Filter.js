@@ -1,10 +1,18 @@
 import { connect } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
 import s from "./Filter.module.css";
 
-import contactActions from '../../Redux/contacts-actions';
-
-const Filter = ({ value, onChange }) => {
+import * as contactActions from '../../Redux/contacts-actions';
+import contactsSelectors from '../../Redux/contacts-selector';
+import  fadeTransition from '../Transition/fadeTransition.module.css'
+const Filter = ({ value, onChange, items }) => {
     return (
+        <CSSTransition
+        in={items.length > 1}
+        timeout={250}
+        classNames={fadeTransition}
+        unmountOnExit
+      >
          <label className={s.filter}>
         Find contacts by name
         <input
@@ -13,12 +21,15 @@ const Filter = ({ value, onChange }) => {
         value={value}
         onChange={onChange}
         placeholder='Enter name for Search'/>
-        </label>)
+            </label>
+        </CSSTransition>)
 }
 
 
 const mapStateToProps = (state) => ({
-    value: state.contacts.filter
+    value: contactsSelectors.getFilter(state),
+    items: contactsSelectors.getVisibleContacts(state),
+
 })
 
 const mapDispatchToProps = dispatch => ({
