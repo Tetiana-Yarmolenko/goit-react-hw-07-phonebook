@@ -13,31 +13,17 @@ import {
 
 axios.defaults.baseURL = 'http://localhost:3223';
 
-const getContacts = () => dispatch => {
-  dispatch(getContactRequest());
 
-    axios
-        .get('/contacts')
-        .then(({ data }) => dispatch(getContactSuccess(data)))
-        .catch(error => dispatch(getContactError(error)));
-    
-};
+const getContacts = () => async dispatch => {
+    dispatch(getContactRequest());
 
-// const getContacts = () => async dispatch => {
-//     dispatch(getContactRequest());
-
-//     try {
-//         const { data } = await axios.get('/contacts');
-//         dispatch(getContactSuccess(data));
-//     } catch (error) {
-//         dispatch(getContactError(error));
-//     }
-
-//     // axios
-//     //     .get('/contacts')
-//     //     .then(({ data }) => dispatch(getContactSuccess(data)))
-//     //     .catch(error => dispatch(getContactError(error)));
-// }
+    try {
+        const { data } = await axios.get('/contacts');
+        dispatch(getContactSuccess(data));
+    } catch (error) {
+        dispatch(getContactError(error));
+    }
+}
 
 
 const addContact = (name, phone) => dispatch => {
