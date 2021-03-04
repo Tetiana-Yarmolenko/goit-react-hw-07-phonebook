@@ -7,12 +7,12 @@ import contactsSelectors from '../../Redux/contacts-selector';
 import  fadeTransition from '../Transition/fadeTransition.module.css'
 const Filter = ({ value, onChange, items }) => {
     return (
-        <CSSTransition
-            in={items.length > 0}
-        timeout={250}
-        classNames={fadeTransition}
-        unmountOnExit
-      >
+    //     <CSSTransition
+    //         in={items.length > 0}
+    //     timeout={250}
+    //     classNames={fadeTransition}
+    //     unmountOnExit
+    //   >
          <label className={s.filter}>
         Find contacts by name
         <input
@@ -22,7 +22,8 @@ const Filter = ({ value, onChange, items }) => {
         onChange={onChange}
         placeholder='Enter name for Search'/>
             </label>
-        </CSSTransition>)
+        // </CSSTransition >
+        )
 }
 
 
