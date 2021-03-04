@@ -8,7 +8,7 @@ import  fadeTransition from '../Transition/fadeTransition.module.css'
 const Filter = ({ value, onChange, items }) => {
     return (
         <CSSTransition
-        in={items.length > 1}
+        in={items.length > 0}
         timeout={250}
         classNames={fadeTransition}
         unmountOnExit
